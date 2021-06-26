@@ -1,6 +1,6 @@
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    margin: 0;
+    padding: 0;
 }
 hr {
     border: none;
@@ -11,11 +11,12 @@ hr {
 .container {
     width: 90%;
 }
-
+.col4-image{
+    text-align: center;
+}
 .banner {
-    background-image: url("/image/bgline.png");
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 .page-top {
@@ -52,6 +53,9 @@ hr {
     text-align: center;
     margin-top: 10%;
 }
+.container-fluid {
+    background-color: #343a40 !important;
+}
 
 .section-headline span {
     background-color: #231F20;
@@ -63,7 +67,13 @@ footer {
     min-height: 250px;
     font-family: 'Open Sans', sans-serif;
 }
-
+.row{
+    margin-right: 0 !important;
+    margin-bottom: 10px;
+}
+.cal{
+    padding: 0!important;
+}
 .footerleft {
     margin-top: 50px;
     padding: 0 36px;

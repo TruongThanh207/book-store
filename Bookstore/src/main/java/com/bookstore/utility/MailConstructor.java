@@ -30,7 +30,7 @@ public class MailConstructor {
         String message = "\nPlease click on this link to verify your email and edit your personal information. Your password is: \n"+password;
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(user.getEmail());
-        email.setSubject("Le's Bookstore - New User");
+        email.setSubject("Bookstore - New User");
         email.setText(url+message);
         email.setFrom(env.getProperty("support.email"));
         return email;
@@ -45,12 +45,12 @@ public class MailConstructor {
 
         return new MimeMessagePreparator() {
             @Override
-            public void prepare(javax.mail.internet.MimeMessage mimeMessage) throws Exception {
+            public void prepare(MimeMessage mimeMessage) throws Exception {
                 MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
-                email.setText(user.getEmail());
+                email.setTo(user.getEmail());
                 email.setSubject("Order Confirmation - " + order.getId());
                 email.setText(text, true);
-                email.setFrom(new InternetAddress("ray.deng83@gmail.com"));
+                email.setFrom("tvthanh200782@gmail.com");
             }
         };
     }

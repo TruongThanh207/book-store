@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2021 at 10:28 AM
+-- Generation Time: Jun 27, 2021 at 12:44 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -40,6 +40,19 @@ CREATE TABLE `billing_address` (
   `order_id` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `billing_address`
+--
+
+INSERT INTO `billing_address` (`id`, `billing_address_city`, `billing_address_country`, `billing_address_name`, `billing_address_state`, `billing_address_street1`, `billing_address_street2`, `billing_address_zipcode`, `order_id`) VALUES
+(17, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 16),
+(21, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 20),
+(25, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 24),
+(29, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 28),
+(33, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 32),
+(39, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 38),
+(45, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 44);
+
 -- --------------------------------------------------------
 
 --
@@ -70,7 +83,13 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`id`, `active`, `author`, `category`, `description`, `format`, `in_stock_number`, `isbn`, `language`, `list_price`, `number_of_pages`, `our_price`, `publication_date`, `publisher`, `shipping_weight`, `title`) VALUES
-(3, b'1', 'KimA', 'Arts & Literature', 'English Update', 'paperback', 10, 1235123412, 'english', 120, 300, 12, '2021-06-19', 'KimA', 1, 'English');
+(3, b'1', 'KimA', 'Arts & Literature', 'English Update', 'paperback', -1, 1235123412, 'english', 120, 300, 12, '2021-06-19', 'KimA', 1, 'English'),
+(11, b'1', 'Alexis Pauline Gumbs ', 'Programming', '', 'hardcover', 3, 1234123143, 'english', 11, 100, 11, '2021-06-27', 'Duke University Press', 1, 'After the End of the World'),
+(7, b'1', 'Meredith Russo ', 'Arts & Literature', '', 'paperback', 7, 123987324, 'english', 12, 200, 11, '', 'Flatiron Books', 1, 'If I Was Your Girl'),
+(8, b'1', 'Esi Edugyan ', 'Fiction', '<p><span style=\"box-sizing: border-box; font-weight: bolder; color: #2c293b; font-family: \'IBM Plex Sans\', sans-serif; font-size: 16px; border: 0px solid var(--color-border);\">One of the&nbsp;<span style=\"box-sizing: border-box; font-weight: bolder; border: 0px solid var(--color-border);\"><em style=\"box-sizing: border-box; border: 0px solid var(--color-border);\">New York Times Book Review&nbsp;</em></span>TEN BEST BOOKS OF THE YEAR</span></p>', 'paperback', 10, 122331234, 'english', 32, 200, 30, '2021-06-01', 'Vintage', 2, 'Washington Black'),
+(9, b'1', 'One World', 'Management', '', 'hardcover', 5, 1234523151, 'english', 32, 200, 32, '2021-06-27', 'Ta-Nehisi Coates ', 2, 'An American Tragedy'),
+(10, b'1', 'Michele Elizabeth Lee ', 'Engineering', '', 'hardcover', 5, 1241324413, 'english', 10, 100, 9, '2021-06-27', ' Wadastick', 1, 'Over 400 Years of Traditional African American Healing'),
+(12, b'1', 'Heather McGhee ', 'Arts & Literature', '', 'hardcover', 5, 231231412, 'english', 14, 200, 14, '2021-06-27', 'One World', 2, 'The Sum of Us');
 
 -- --------------------------------------------------------
 
@@ -83,6 +102,14 @@ CREATE TABLE `book_to_cart_item` (
   `book_id` bigint(20) DEFAULT NULL,
   `cart_item_id` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `book_to_cart_item`
+--
+
+INSERT INTO `book_to_cart_item` (`id`, `book_id`, `cart_item_id`) VALUES
+(37, 7, 36),
+(43, 7, 42);
 
 -- --------------------------------------------------------
 
@@ -99,6 +126,14 @@ CREATE TABLE `cart_item` (
   `shopping_cart_id` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `cart_item`
+--
+
+INSERT INTO `cart_item` (`id`, `qty`, `subtotal`, `book_id`, `order_id`, `shopping_cart_id`) VALUES
+(36, 1, '11.00', 7, 38, NULL),
+(42, 1, '11.00', 7, 44, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -114,20 +149,20 @@ CREATE TABLE `hibernate_sequence` (
 --
 
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(7),
-(7),
-(7),
-(7),
-(7),
-(7),
-(7),
-(7),
-(7),
-(7),
-(7),
-(7),
-(7),
-(7);
+(48),
+(48),
+(48),
+(48),
+(48),
+(48),
+(48),
+(48),
+(48),
+(48),
+(48),
+(48),
+(48),
+(48);
 
 -- --------------------------------------------------------
 
@@ -141,6 +176,13 @@ CREATE TABLE `password_reset_token` (
   `token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` bigint(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `password_reset_token`
+--
+
+INSERT INTO `password_reset_token` (`id`, `expiry_date`, `token`, `user_id`) VALUES
+(10, '2021-06-28 16:43:26', '7e780e39-dfc1-463c-9308-30f8dcd3b62a', 7);
 
 -- --------------------------------------------------------
 
@@ -159,6 +201,19 @@ CREATE TABLE `payment` (
   `type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `order_id` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`id`, `card_name`, `card_number`, `cvc`, `expiry_month`, `expiry_year`, `holder_name`, `type`, `order_id`) VALUES
+(18, NULL, '123', 123, 1, 2017, 'Truong Van Thanh', 'visa', 16),
+(22, NULL, '123', 123, 1, 2017, 'Truong Van Thanh', 'visa', 20),
+(26, NULL, '123', 123, 1, 2017, 'Truong Van Thanh', 'visa', 24),
+(30, NULL, '123', 123, 1, 2017, 'Truong Van Thanh', 'visa', 28),
+(34, NULL, '123', 123, 1, 2017, 'Truong Van Thanh', 'visa', 32),
+(40, NULL, '123', 123, 1, 2017, 'Truong Van Thanh', 'visa', 38),
+(46, NULL, '123', 123, 1, 2017, 'Truong Van Thanh', 'visa', 44);
 
 -- --------------------------------------------------------
 
@@ -197,6 +252,19 @@ CREATE TABLE `shipping_address` (
   `order_id` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `shipping_address`
+--
+
+INSERT INTO `shipping_address` (`id`, `shipping_address_city`, `shipping_address_country`, `shipping_address_name`, `shipping_address_state`, `shipping_address_street1`, `shipping_address_street2`, `shipping_address_zipcode`, `order_id`) VALUES
+(19, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 16),
+(23, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 20),
+(27, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 24),
+(31, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 28),
+(35, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 32),
+(41, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 38),
+(47, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 44);
+
 -- --------------------------------------------------------
 
 --
@@ -214,7 +282,8 @@ CREATE TABLE `shopping_cart` (
 --
 
 INSERT INTO `shopping_cart` (`id`, `grand_total`, `user_id`) VALUES
-(6, NULL, 4);
+(6, NULL, 4),
+(9, '0.00', 7);
 
 -- --------------------------------------------------------
 
@@ -239,7 +308,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `email`, `enabled`, `first_name`, `last_name`, `password`, `phone`, `username`) VALUES
 (1, 'admin@gmail.com', b'1', 'Admin', 'Admin', '$2a$12$LtbYtEzOBdnsiD/E9Wtj2OZz80wXDrKDMacktYr8pq3j0X6HO75Fm', NULL, 'admin'),
-(4, 'JAdams@gmail.com', b'1', 'John', 'Adams', '$2a$12$LtbYtEzOBdnsiD/E9Wtj2OnpJ1FB7girEHgGVhynqGSFVKGazltGO', NULL, 'j');
+(4, 'JAdams@gmail.com', b'1', 'John', 'Adams', '$2a$12$LtbYtEzOBdnsiD/E9Wtj2OnpJ1FB7girEHgGVhynqGSFVKGazltGO', NULL, 'j'),
+(7, 'vfrshjklg@gmail.com', b'1', 'Thanh', 'Truong', '$2a$12$LtbYtEzOBdnsiD/E9Wtj2O4LzNLMVws6kPxHxi74TFWJVXNWkFLoS', NULL, 'nt0802');
 
 -- --------------------------------------------------------
 
@@ -258,6 +328,13 @@ CREATE TABLE `user_billing` (
   `user_billing_zipcode` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_payment_id` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `user_billing`
+--
+
+INSERT INTO `user_billing` (`id`, `user_billing_city`, `user_billing_country`, `user_billing_name`, `user_billing_state`, `user_billing_street1`, `user_billing_street2`, `user_billing_zipcode`, `user_payment_id`) VALUES
+(12, 'hcm', NULL, 'Thanh', 'AK', 'hcm', 'hcm', '70000', 11);
 
 -- --------------------------------------------------------
 
@@ -278,6 +355,19 @@ CREATE TABLE `user_order` (
   `user_id` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `user_order`
+--
+
+INSERT INTO `user_order` (`id`, `order_date`, `order_status`, `order_total`, `shipping_date`, `shipping_method`, `billing_address_id`, `payment_id`, `shipping_address_id`, `user_id`) VALUES
+(16, '2021-06-27 16:45:37', 'created', '48.00', NULL, 'groundShipping', 17, 18, 19, 7),
+(20, '2021-06-27 16:49:08', 'created', '48.00', NULL, 'groundShipping', 21, 22, 23, 7),
+(24, '2021-06-27 16:53:23', 'created', '12.00', NULL, 'groundShipping', 25, 26, 27, 7),
+(28, '2021-06-27 16:56:23', 'created', '12.00', NULL, 'groundShipping', 29, 30, 31, 7),
+(32, '2021-06-27 17:04:51', 'created', '12.00', NULL, 'groundShipping', 33, 34, 35, 7),
+(38, '2021-06-27 17:39:00', 'created', '11.00', NULL, 'groundShipping', 39, 40, 41, 7),
+(44, '2021-06-27 17:43:28', 'created', '11.00', NULL, 'groundShipping', 45, 46, 47, 7);
+
 -- --------------------------------------------------------
 
 --
@@ -297,6 +387,13 @@ CREATE TABLE `user_payment` (
   `user_id` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `user_payment`
+--
+
+INSERT INTO `user_payment` (`id`, `card_name`, `card_number`, `cvc`, `default_payment`, `expiry_month`, `expiry_year`, `holder_name`, `type`, `user_id`) VALUES
+(11, 'Thanh', '123', 123, b'1', 3, 22, 'Truong Van Thanh', 'visa', 7);
+
 -- --------------------------------------------------------
 
 --
@@ -315,7 +412,8 @@ CREATE TABLE `user_role` (
 
 INSERT INTO `user_role` (`user_role_id`, `role_id`, `user_id`) VALUES
 (2, 0, 1),
-(5, 1, 4);
+(5, 1, 4),
+(8, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -335,6 +433,13 @@ CREATE TABLE `user_shipping` (
   `user_shipping_zipcode` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `user_shipping`
+--
+
+INSERT INTO `user_shipping` (`id`, `user_shipping_city`, `user_shipping_country`, `user_shipping_default`, `user_shipping_name`, `user_shipping_state`, `user_shipping_street1`, `user_shipping_street2`, `user_shipping_zipcode`, `user_id`) VALUES
+(13, 'hcm', NULL, b'1', 'Thanh', 'AK', 'hcm', 'hcm', '70000', 7);
 
 --
 -- Indexes for dumped tables
